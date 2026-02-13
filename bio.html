@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combined Maths | Select Grade</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #4338ca;
+            --primary-light: #6366f1;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-card);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-back {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+
+        /* CONTAINER */
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .header-text {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header-text h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #4338ca, #0ea5e9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-text p {
+            color: var(--text-muted);
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* GRID SYSTEM */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+        }
+
+        /* CARDS */
+        .option-card {
+            background: var(--bg-card);
+            padding: 30px 25px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--text-main);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-light);
+        }
+
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            transition: 0.3s;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* COLORS */
+        .opt-12 .card-icon {
+            color: #0ea5e9;
+            background: #e0f2fe;
+        }
+
+        .opt-13 .card-icon {
+            color: #8b5cf6;
+            background: #ede9fe;
+        }
+
+        .opt-rev .card-icon {
+            color: #f59e0b;
+            background: #fef3c7;
+        }
+
+        .opt-past .card-icon {
+            color: #ef4444;
+            background: #fee2e2;
+        }
+
+        .option-card:hover.opt-12 .card-icon {
+            background: #0ea5e9;
+            color: white;
+        }
+
+        .option-card:hover.opt-13 .card-icon {
+            background: #8b5cf6;
+            color: white;
+        }
+
+        .option-card:hover.opt-rev .card-icon {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .option-card:hover.opt-past .card-icon {
+            background: #ef4444;
+            color: white;
+        }
+
+        /* --- MOBILE OPTIMIZATIONS --- */
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .btn-back span {
+                display: none;
+            }
+
+            /* Hide text "Back to Dashboard" on very small screens, keep icon */
+            .btn-back::after {
+                content: "Back";
+            }
+
+            /* Replace with shorter text */
+
+            .container {
+                padding: 30px 15px;
+            }
+
+            .header-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .header-text p {
+                font-size: 0.95rem;
+            }
+
+            .options-grid {
+                grid-template-columns: 1fr;
+                /* Force single column on phone */
+                gap: 15px;
+            }
+
+            .option-card {
+                padding: 20px;
+                /* Smaller padding inside cards */
+                flex-direction: row;
+                /* Layout icon and text side-by-side on mobile */
+                align-items: center;
+                text-align: left;
+            }
+
+            .card-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                margin-bottom: 0;
+                margin-right: 15px;
+                flex-shrink: 0;
+            }
+
+            .card-info {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .card-title {
+                font-size: 1.1rem;
+                margin-bottom: 2px;
+            }
+
+            .card-desc {
+                font-size: 0.8rem;
+            }
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f8fafc;
+            /* ... add other dark mode variables ... */
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="maths-dashboard.html" class="btn-back">
+            <i class="fas fa-arrow-left"></i> <span>Back to Dashboard</span>
+        </a>
+        <div class="logo">
+            <i class="fas fa-shapes"></i> A/L Guru
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-text">
+            <h1>Select Grade</h1>
+            <p>Choose your learning path</p>
+        </div>
+
+        <div class="options-grid">
+
+            <a href="biograde12.html" class="option-card opt-12">
+                <div class="card-icon"><i class="fas fa-layer-group"></i></div>
+                <div class="card-info">
+                    <div class="card-title">Grade 12</div>
+                    <div class="card-desc">Theory & Basics</div>
+                </div>
+            </a>
+
+            <a href="biograde13.html" class="option-card opt-13">
+                <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+                <div class="card-info">
+                    <div class="card-title">Grade 13</div>
+                    <div class="card-desc">Advanced Theory</div>
+                </div>
+            </a>
+
+            <a href="biograde.html" class="option-card opt-rev">
+                <div class="card-icon"><i class="fas fa-infinity"></i></div>
+                <div class="card-info">
+                    <div class="card-title">Grade 12 + 13</div>
+                    <div class="card-desc">Full Revision</div>
+                </div>
+            </a>
+
+            <a href="biopast.html" class="option-card opt-past">
+                <div class="card-icon"><i class="fas fa-history"></i></div>
+                <div class="card-info">
+                    <div class="card-title">Past Papers</div>
+                    <div class="card-desc">Exams & Answers</div>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+</body>
+
+</html>

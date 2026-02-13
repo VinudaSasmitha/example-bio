@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Wise Selection</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* BLUE THEME VARIABLES */
+            --primary: #2563eb;
+            /* Royal Blue */
+            --primary-light: #eff6ff;
+            /* Very Light Blue */
+            --primary-hover: #dbeafe;
+            /* Light Blue for Hover */
+            --text-dark: #1e3a8a;
+            /* Dark Blue Text */
+            --text-gray: #64748b;
+            --bg-body: #f0f9ff;
+            /* Alice Blue Background */
+            --white: #ffffff;
+            --shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.1), 0 8px 10px -6px rgba(37, 99, 235, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', 'Noto Sans Sinhala', sans-serif;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            /* Soft Blue Gradient */
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            padding: 15px 30px;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .btn-back {
+            text-decoration: none;
+            color: var(--text-gray);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .btn-back:hover {
+            color: var(--primary);
+            transform: translateX(-3px);
+        }
+
+        /* CONTAINER */
+        .container {
+            padding: 50px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        p {
+            color: var(--text-gray);
+            margin-top: 0;
+            margin-bottom: 40px;
+        }
+
+        /* CARD DESIGN */
+        .option-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            box-shadow: var(--shadow);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Hover Animation */
+        .option-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            background: var(--primary-light);
+            box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.2);
+        }
+
+        /* ICON BOX */
+        .icon-box {
+            width: 65px;
+            height: 65px;
+            background: #e0f2fe;
+            /* Sky Blue */
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-right: 25px;
+            transition: 0.3s;
+            flex-shrink: 0;
+        }
+
+        .option-card:hover .icon-box {
+            background: var(--primary);
+            color: var(--white);
+            transform: rotate(10deg);
+        }
+
+        /* TEXT */
+        .card-content {
+            text-align: left;
+        }
+
+        .title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .desc {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        /* ARROW ICON */
+        .arrow {
+            margin-left: auto;
+            color: #cbd5e1;
+            transition: 0.3s;
+        }
+
+        .option-card:hover .arrow {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .option-card {
+                padding: 20px;
+            }
+
+            .icon-box {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+                margin-right: 15px;
+            }
+
+            .title {
+                font-size: 1.1rem;
+            }
+
+            .desc {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="mathzpuregrade12sets.html" class="btn-back">
+            <i class="fas fa-arrow-left"></i> Back to Hub
+        </a>
+    </nav>
+
+    <div class="container">
+
+        <h1>Select Question Type</h1>
+        <p>Choose your preferred format to start practicing</p>
+
+        <a href="bio1eassy.html" class="option-card">
+            <div class="icon-box"><i class="fas fa-pen-fancy"></i></div>
+            <div class="card-content">
+                <div class="title">රචනා ප්‍රශ්න (Essay)</div>
+                <div class="desc">Structured Essay Questions</div>
+            </div>
+            <i class="fas fa-chevron-right arrow"></i>
+        </a>
+
+        <a href="bio1mcq.html" class="option-card">
+            <div class="icon-box"><i class="fas fa-check-circle"></i></div>
+            <div class="card-content">
+                <div class="title">බහුවරණ ප්‍රශ්න (MCQ)</div>
+                <div class="desc">Multiple Choice Questions</div>
+            </div>
+            <i class="fas fa-chevron-right arrow"></i>
+        </a>
+
+
+        <a href="bio1anumana.html" class="option-card">
+            <div class="icon-box"><i class="fas fa-pen-fancy"></i></div>
+            <div class="card-content">
+                <div class="title">අනුමාන ප්‍රශ්න (Essay)</div>
+                <div class="desc">Structured Essay Questions</div>
+            </div>
+            <i class="fas fa-chevron-right arrow"></i>
+        </a>
+
+        <a href="bio1note.html" class="option-card">
+            <div class="icon-box"><i class="fas fa-check-circle"></i></div>
+            <div class="card-content">
+                <div class="title">කෙටි සටහන් (Notes)</div>
+                <div class="desc">Study Notes</div>
+            </div>
+            <i class="fas fa-chevron-right arrow"></i>
+        </a>
+
+
+    </div>
+
+</body>
+
+</html>

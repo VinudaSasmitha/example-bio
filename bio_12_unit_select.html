@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="si">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 12 | Biology</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* Biology Theme - Blue */
+            --primary: #0ea5e9;
+            --primary-dark: #0369a1;
+            --accent: #38bdf8;
+            --bg-light: #f0f9ff;
+            --white: #ffffff;
+            --text-dark: #0c4a6e;
+            --text-light: #64748b;
+        }
+
+        /* (ඔබගේ original CSS එක 그대로 use කරන්න) */
+        body {
+            margin: 0;
+            font-family: 'Poppins', 'Noto Sans Sinhala', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        .bg-shape {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(120deg, #0ea5e9, #38bdf8);
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .lesson-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            padding-bottom: 50px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 18px;
+            padding: 25px;
+            text-decoration: none;
+            color: var(--text-dark);
+            border: 1px solid rgba(14, 165, 233, 0.1);
+            display: flex;
+            flex-direction: column;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(14, 165, 233, 0.1);
+        }
+
+        .icon-box {
+            font-size: 1.6rem;
+            color: var(--primary);
+            height: 50px;
+            width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e0f2fe;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .card-sub {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-shape"></div>
+
+    <div class="container">
+
+        <h1 style="color:white;">Grade 12 Biology</h1>
+        <p style="color:white;">Syllabus Overview</p>
+
+        <div class="lesson-grid">
+
+            <a href="biomcqeassyselector.html" class="card">
+                <div class="icon-box"><i class="fas fa-seedling"></i></div>
+                <div class="card-title">01. ජීව විද්‍යාව හඳුන්වා දීම</div>
+                <div class="card-sub">Introduction to Biology</div>
+            </a>
+
+            <a href="bio2note.html" class="card">
+                <div class="icon-box"><i class="fas fa-atom"></i></div>
+                <div class="card-title">02. ජීවයේ රසායනික පදනම</div>
+                <div class="card-sub">Chemical Basis of Life</div>
+            </a>
+
+            <a href="bio3note.html" class="card">
+                <div class="icon-box"><i class="fas fa-dna"></i></div>
+                <div class="card-title">03. ජෛව අණු</div>
+                <div class="card-sub">Biological Molecules</div>
+            </a>
+
+            <a href="bio4note.html" class="card">
+                <div class="icon-box"><i class="fas fa-microscope"></i></div>
+                <div class="card-title">04. සෛල ව්‍යුහය</div>
+                <div class="card-sub">Cell Structure</div>
+            </a>
+
+            <a href="" class="card">
+                <div class="icon-box"><i class="fas fa-exchange-alt"></i></div>
+                <div class="card-title">05. සෛල පරිවහනය</div>
+                <div class="card-sub">Cell Transport Mechanisms</div>
+            </a>
+
+            <a href="#" class="card">
+                <div class="icon-box"><i class="fas fa-sync"></i></div>
+                <div class="card-title">06. සෛල චක්‍රය</div>
+                <div class="card-sub">Cell Cycle</div>
+            </a>
+
+            <a href="#" class="card">
+                <div class="icon-box"><i class="fas fa-project-diagram"></i></div>
+                <div class="card-title">07. අනූනන හා ඌනන විභාජනය</div>
+                <div class="card-sub">Mitosis & Meiosis</div>
+            </a>
+
+            <a href="#" class="card">
+                <div class="icon-box"><i class="fas fa-leaf"></i></div>
+                <div class="card-title">08. ශාක පටක</div>
+                <div class="card-sub">Plant Tissues</div>
+            </a>
+
+            <a href="#" class="card">
+                <div class="icon-box"><i class="fas fa-heartbeat"></i></div>
+                <div class="card-title">09. සත්ත්ව පටක</div>
+                <div class="card-sub">Animal Tissues</div>
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

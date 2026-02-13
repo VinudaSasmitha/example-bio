@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathz Master | Pro Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* Color Palette */
+            --primary: #6366f1;
+            /* Indigo */
+            --primary-dark: #4f46e5;
+            --accent: #06b6d4;
+            /* Cyan */
+            --success: #10b981;
+            /* Green */
+            --warning: #f59e0b;
+            /* Amber */
+            --bg-body: #f1f5f9;
+            --bg-card: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --gradient-hero: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+            --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Dark Mode */
+        [data-theme="dark"] {
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', 'Noto Sans Sinhala', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            transition: 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: var(--bg-card);
+            box-shadow: var(--shadow-card);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            letter-spacing: -0.5px;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            cursor: pointer;
+        }
+
+        /* --- MAIN LAYOUT --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* --- HERO SECTION (Countdown & Quote) --- */
+        .hero-section {
+            background: var(--gradient-hero);
+            border-radius: 24px;
+            padding: 40px 20px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.3);
+        }
+
+        /* Decorative Bubbles */
+        .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .b1 {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            left: -100px;
+        }
+
+        .b2 {
+            width: 150px;
+            height: 150px;
+            bottom: -50px;
+            right: -20px;
+        }
+
+        .quote-container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            padding: 15px 25px;
+            border-radius: 16px;
+            display: inline-block;
+            margin-bottom: 30px;
+            max-width: 800px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .quote-text {
+            font-family: 'Noto Sans Sinhala';
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Timer Cards */
+        .timer-grid {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .time-card {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--primary-dark);
+            padding: 15px;
+            border-radius: 16px;
+            min-width: 80px;
+            text-align: center;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .time-val {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: block;
+            line-height: 1;
+        }
+
+        .time-lbl {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-top: 5px;
+            font-family: 'Noto Sans Sinhala';
+        }
+
+        .edit-date-btn {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .edit-date-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* --- DASHBOARD WIDGETS (Tracker & Challenge) --- */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .widget-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: var(--shadow-card);
+            position: relative;
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+
+        .widget-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .widget-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .widget-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .widget-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        /* 1. Study Tracker (Circular) */
+        .progress-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .circular-progress {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: conic-gradient(var(--primary) 0deg, #e2e8f0 0deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transition: background 0.5s ease;
+        }
+
+        .circular-progress::before {
+            content: "";
+            position: absolute;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: var(--bg-card);
+        }
+
+        .progress-value {
+            position: relative;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .progress-label {
+            position: relative;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            top: -5px;
+        }
+
+        .tracker-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn-circle {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            background: var(--bg-body);
+            color: var(--text-main);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-add {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-add:hover {
+            background: var(--primary-dark);
+            transform: scale(1.1);
+        }
+
+        .btn-reset:hover {
+            background: #fee2e2;
+            color: #ef4444;
+        }
+
+        /* 2. Daily Challenge */
+        .task-box {
+            background: rgba(241, 245, 249, 0.5);
+            /* light gray */
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border-left: 5px solid var(--accent);
+        }
+
+        [data-theme="dark"] .task-box {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .task-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            font-family: 'Noto Sans Sinhala';
+            line-height: 1.5;
+        }
+
+        .btn-complete {
+            background: var(--bg-card);
+            border: 2px solid var(--success);
+            color: var(--success);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 auto;
+        }
+
+        .btn-complete.completed {
+            background: var(--success);
+            color: white;
+        }
+
+        /* --- SUBJECTS GRID --- */
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .subject-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+            transition: 0.3s;
+            cursor: pointer;
+            border-top: 5px solid transparent;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Specific Colors for Subjects */
+        .sub-maths:hover {
+            border-color: #ef4444;
+        }
+
+        .sub-phy:hover {
+            border-color: #3b82f6;
+        }
+
+        .sub-chem:hover {
+            border-color: #10b981;
+        }
+
+        .sub-ict:hover {
+            border-color: #8b5cf6;
+        }
+
+        .sub-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            background: var(--bg-body);
+            transition: 0.3s;
+        }
+
+        .sub-maths .sub-icon {
+            color: #ef4444;
+            background: #fee2e2;
+        }
+
+        .sub-phy .sub-icon {
+            color: #3b82f6;
+            background: #dbeafe;
+        }
+
+        .sub-chem .sub-icon {
+            color: #10b981;
+            background: #d1fae5;
+        }
+
+        .sub-ict .sub-icon {
+            color: #8b5cf6;
+            background: #ede9fe;
+        }
+
+        .sub-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .sub-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* --- SIDEBAR & OVERLAY (Functional) --- */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 280px;
+            height: 100%;
+            background: var(--bg-card);
+            z-index: 1000;
+            padding: 25px;
+            transition: 0.4s;
+            box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 900;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 30px 15px;
+            }
+
+            .time-val {
+                font-size: 1.5rem;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* --- FOOTER (Updated to match Main Template exactly) --- */
+        footer {
+            background-color: #1b4d3e;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            /* Space inside footer */
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        footer a {
+            color: #40ffaa;
+            /* Neon Green links */
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="overlay" onclick="toggleSidebar()"></div>
+
+    <div class="sidebar" id="sidebar">
+        <div style="display:flex; justify-content:space-between; margin-bottom:30px;">
+            <h3 style="margin:0; color:var(--primary);">Menu</h3>
+            <i class="fas fa-times" onclick="toggleSidebar()" style="cursor:pointer; font-size:1.2rem;"></i>
+        </div>
+
+        <div style="text-align:center; margin-bottom:30px; padding-bottom:20px; border-bottom:1px solid #eee;">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                style="width:70px; border-radius:50%; border:3px solid var(--primary);">
+            <div style="font-weight:700; margin-top:10px;">Student Name</div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:10px;">
+            <div onclick="toggleDarkMode()"
+                style="padding:10px; cursor:pointer; display:flex; align-items:center; gap:10px;">
+                <i class="fas fa-moon"></i> Dark Mode
+            </div>
+            <div style="padding:10px; cursor:pointer; display:flex; align-items:center; gap:10px; color:#ef4444;">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </div>
+        </div>
+
+        <div style="margin-top:auto; font-size:0.75rem; text-align:center; color:var(--text-muted);">
+            Pro Dashboard v2.0
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <button class="menu-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+        <div class="nav-logo">Mathz Master</div>
+        <div style="width: 24px;"></div>
+    </nav>
+
+    <div class="container">
+
+        <div class="hero-section">
+            <div class="bubble b1"></div>
+            <div class="bubble b2"></div>
+
+            <div class="quote-container">
+                <i class="fas fa-quote-left" style="margin-right:8px; opacity:0.6;"></i>
+                <span id="daily-quote">Loading Motivation...</span>
+                <i class="fas fa-quote-right" style="margin-left:8px; opacity:0.6;"></i>
+            </div>
+
+            <div style="font-family: 'Noto Sans Sinhala'; font-size: 0.9rem; opacity: 0.9; letter-spacing: 1px;">
+                විභාගයට තව කාලය (Time Remaining)
+            </div>
+
+            <div class="timer-grid">
+                <div class="time-card">
+                    <span class="time-val" id="days">00</span>
+                    <span class="time-lbl">Days</span>
+                </div>
+                <div class="time-card">
+                    <span class="time-val" id="hours">00</span>
+                    <span class="time-lbl">Hours</span>
+                </div>
+                <div class="time-card">
+                    <span class="time-val" id="mins">00</span>
+                    <span class="time-lbl">Mins</span>
+                </div>
+                <div class="time-card">
+                    <span class="time-val" id="secs">00</span>
+                    <span class="time-lbl">Secs</span>
+                </div>
+            </div>
+
+            <button class="edit-date-btn" onclick="setExamDate()">
+                <i class="fas fa-pencil-alt"></i> Change Date
+            </button>
+        </div>
+
+        <div class="dashboard-grid">
+
+            <div class="widget-card">
+                <div class="widget-header">
+                    <div class="widget-title">Study Streak 🔥</div>
+                    <div class="widget-icon" style="background:#e0e7ff; color:var(--primary);"><i
+                            class="fas fa-clock"></i></div>
+                </div>
+
+                <div class="progress-container">
+                    <div class="circular-progress" id="progress-circle">
+                        <div style="text-align:center;">
+                            <div class="progress-value"><span id="hours-done">0</span>/<span id="hours-goal">10</span>
+                            </div>
+                            <div class="progress-label">Hours Today</div>
+                        </div>
+                    </div>
+
+                    <div class="tracker-controls">
+                        <button class="btn-circle btn-reset" onclick="resetHours()" title="Reset"><i
+                                class="fas fa-undo"></i></button>
+                        <button class="btn-circle btn-add" onclick="addHour()"><i class="fas fa-plus"></i></button>
+                        <button class="btn-circle btn-reset" onclick="editGoal()" title="Set Goal"><i
+                                class="fas fa-bullseye"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="widget-card">
+                <div class="widget-header">
+                    <div class="widget-title">Daily Challenge 🎯</div>
+                    <div class="widget-icon" style="background:#d1fae5; color:var(--success);"><i
+                            class="fas fa-check-circle"></i></div>
+                </div>
+
+                <div class="task-box">
+                    <div class="task-text" id="daily-task">
+                        Loading today's task...
+                    </div>
+                    <button class="btn-complete" id="task-btn" onclick="toggleTask()">
+                        <i class="fas fa-circle"></i> Mark as Done
+                    </button>
+                </div>
+                <p style="text-align:center; margin-top:15px; font-size:0.8rem; color:var(--text-muted);">
+                    Complete this to keep your momentum!
+                </p>
+            </div>
+        </div>
+
+        <div class="section-title">Your Subjects</div>
+        <div class="subjects-grid">
+            <div class="subject-card sub-maths" onclick="window.location.href='bioselectsets.html'">
+                <div class="sub-icon"><i class="fas fa-square-root-alt"></i></div>
+                <div class="sub-name">Biologhy</div>
+                <div class="sub-desc">Pure & Applied • 4 Units Pending</div>
+            </div>
+
+            <div class="subject-card sub-phy" onclick="alert('Going to Physics...')">
+                <div class="sub-icon"><i class="fas fa-atom"></i></div>
+                <div class="sub-name">Physics</div>
+                <div class="sub-desc">Electronics & Light • 250 MCQs</div>
+            </div>
+
+            <div class="subject-card sub-chem" onclick="alert('Going to Chemistry...')">
+                <div class="sub-icon"><i class="fas fa-flask"></i></div>
+                <div class="sub-name">Chemistry</div>
+                <div class="sub-desc">Organic Conv. • Industrial Chem</div>
+            </div>
+
+            <div class="subject-card sub-ict" onclick="alert('Going to ICT...')">
+                <div class="sub-icon"><i class="fas fa-laptop-code"></i></div>
+                <div class="sub-name">ICT</div>
+                <div class="sub-desc">Python • Networking • Logic Gates</div>
+            </div>
+        </div>
+
+        <div style="height: 50px;"></div>
+    </div>
+
+    <script>
+        /* --- SIDEBAR TOGGLE --- */
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.querySelector('.overlay').classList.toggle('active');
+        }
+
+        /* --- DARK MODE --- */
+        function toggleDarkMode() {
+            if (document.body.getAttribute('data-theme') === 'dark') {
+                document.body.removeAttribute('data-theme');
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+            }
+        }
+
+        /* --- 1. COUNTDOWN TIMER --- */
+        let examDate;
+        const savedDate = localStorage.getItem('myExamDate');
+        if (savedDate) examDate = new Date(savedDate).getTime();
+        else examDate = new Date("Aug 4, 2026 08:30:00").getTime();
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const d = examDate - now;
+            if (d < 0) return;
+
+            document.getElementById("days").innerText = Math.floor(d / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+            document.getElementById("hours").innerText = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+            document.getElementById("mins").innerText = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+            document.getElementById("secs").innerText = Math.floor((d % (1000 * 60)) / 1000).toString().padStart(2, '0');
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        function setExamDate() {
+            const userDate = prompt("Enter Exam Date (YYYY-MM-DD):", "2026-08-04");
+            if (userDate) {
+                const newDate = new Date(userDate + "T08:30:00");
+                if (!isNaN(newDate.getTime())) {
+                    localStorage.setItem('myExamDate', newDate);
+                    examDate = newDate.getTime();
+                    updateTimer();
+                } else alert("Invalid Date!");
+            }
+        }
+
+        /* --- 2. RANDOM QUOTES (SINHALA) --- */
+        const quotes = [
+            "අද කරන කැපවීම හෙට ජයග්‍රහණයයි.",
+            "නොනවතින උත්සාහය ජයග්‍රහණයේ රහසයි.",
+            "සිහිනයක් කියන්නේ නින්දේ දකින දෙයක් නොවේ, නින්ද නැති කරන දෙයක්.",
+            "ඔබට කල නොහැකි යැයි සිතෙන දේ කිරීම තරම් සතුටක් තවත් නැත.",
+            "කාලය රත්තරන් වලටත් වඩා වටිනවා.",
+            "පරාජය වීම ලැජ්ජාවක් නොවේ, නැවත නොනැගිටීම ලැජ්ජාවකි."
+        ];
+        document.getElementById('daily-quote').innerText = `"${quotes[Math.floor(Math.random() * quotes.length)]}"`;
+
+        /* --- 3. STUDY TRACKER LOGIC --- */
+        let goal = parseInt(localStorage.getItem('studyGoal')) || 10;
+        let done = parseInt(localStorage.getItem('studyDone')) || 0;
+
+        // Reset Logic (Simple check: if last saved date != today, reset)
+        const lastDate = localStorage.getItem('lastStudyDate');
+        const todayStr = new Date().toDateString();
+
+        if (lastDate !== todayStr) {
+            done = 0; // Reset for new day
+            localStorage.setItem('studyDone', 0);
+            localStorage.setItem('lastStudyDate', todayStr);
+            // Also reset task
+            localStorage.removeItem('taskDone');
+        }
+
+        function updateProgressUI() {
+            document.getElementById('hours-done').innerText = done;
+            document.getElementById('hours-goal').innerText = goal;
+
+            // Calculate degrees for conic gradient
+            const percentage = (done / goal) * 360;
+            const finalDeg = percentage > 360 ? 360 : percentage;
+
+            const circle = document.getElementById('progress-circle');
+            // If goal reached, make it green, else primary color
+            const color = done >= goal ? '#10b981' : 'var(--primary)';
+
+            circle.style.background = `conic-gradient(${color} ${finalDeg}deg, #e2e8f0 0deg)`;
+        }
+
+        function addHour() {
+            done++;
+            localStorage.setItem('studyDone', done);
+            localStorage.setItem('lastStudyDate', new Date().toDateString());
+            updateProgressUI();
+        }
+
+        function resetHours() {
+            if (confirm("Reset today's hours?")) {
+                done = 0;
+                localStorage.setItem('studyDone', 0);
+                updateProgressUI();
+            }
+        }
+
+        function editGoal() {
+            const newGoal = prompt("Set Daily Goal (Hours):", goal);
+            if (newGoal && !isNaN(newGoal)) {
+                goal = parseInt(newGoal);
+                localStorage.setItem('studyGoal', goal);
+                updateProgressUI();
+            }
+        }
+
+        // Init UI
+        updateProgressUI();
+
+        /* --- 4. DAILY CHALLENGE LOGIC --- */
+        const challenges = [
+            "අද දින Combined Maths ත්‍රිකෝණමිති ගැටළු 20ක් විසඳන්න.",
+            "Physics ආලෝකය පාඩමේ Theory කොටස් සම්පූර්ණ කරන්න.",
+            "Chemistry කාබනික පරිවර්තන (Conversions) 15ක් කරන්න.",
+            "ICT Logic Gates පසුගිය විභාග ප්‍රශ්න 2ක් ලියන්න.",
+            "අද දින පැය 2ක सතත (Continuous) පාඩම් කාලයක් ගන්න.",
+            "Combined Maths අවකලනය මූලික සිද්ධාන්ත බලන්න.",
+            "සතියේ අතපසු වූ පාඩම් 2ක් නැවත මතක් කරගන්න."
+        ];
+
+        // Pick a challenge based on date (so it stays same for the whole day)
+        const dayIndex = new Date().getDate() % challenges.length;
+        document.getElementById('daily-task').innerText = challenges[dayIndex];
+
+        // Check if done
+        if (localStorage.getItem('taskDone') === 'true') {
+            const btn = document.getElementById('task-btn');
+            btn.classList.add('completed');
+            btn.innerHTML = '<i class="fas fa-check"></i> Completed';
+        }
+
+        function toggleTask() {
+            const btn = document.getElementById('task-btn');
+            if (btn.classList.contains('completed')) {
+                // Undo
+                btn.classList.remove('completed');
+                btn.innerHTML = '<i class="fas fa-circle"></i> Mark as Done';
+                localStorage.setItem('taskDone', 'false');
+            } else {
+                // Do
+                btn.classList.add('completed');
+                btn.innerHTML = '<i class="fas fa-check"></i> Completed';
+                localStorage.setItem('taskDone', 'true');
+                // Confetti or alert could go here
+            }
+        }
+
+    </script>
+</body>
+
+</html>

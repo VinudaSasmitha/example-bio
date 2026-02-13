@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="si">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biology Unit 01 - Master Note</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        /* --- Base Styles (Laptop/Desktop) --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0 auto;
+            background-color: #f9f9f9;
+            max-width: 900px;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #27ae60;
+            /* Changed to Green for Biology */
+            padding-bottom: 15px;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            background-color: #e8f6f3;
+            border-left: 5px solid #1abc9c;
+            padding: 15px;
+            margin-bottom: 30px;
+            color: #16a085;
+            font-weight: 500;
+        }
+
+        h2 {
+            color: #27ae60;
+            border-left: 5px solid #27ae60;
+            padding-left: 15px;
+            margin-top: 40px;
+            background-color: #eafaf1;
+            padding: 12px;
+            border-radius: 0 5px 5px 0;
+            font-size: 1.5rem;
+        }
+
+        h3 {
+            color: #16a085;
+            margin-top: 25px;
+            font-size: 1.2rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        p,
+        li {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            margin-bottom: 15px;
+        }
+
+        .example {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-left: 5px solid #f39c12;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .example-title {
+            font-weight: bold;
+            color: #d35400;
+            margin-bottom: 10px;
+            display: block;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .important-box {
+            background-color: #fff3e0;
+            border: 2px solid #ffcc80;
+            color: #e65100;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+
+        .important-box h3 {
+            color: #e65100;
+            border-bottom: none;
+            margin-top: 0;
+        }
+
+        /* --- Image Styling --- */
+        .diagram-container {
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+        }
+
+        .diagram-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .diagram-caption {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* --- New Video Section Style --- */
+        .video-box {
+            background-color: #fcf4f4;
+            border: 1px solid #e6cece;
+            border-left: 5px solid #ff0000;
+            /* YouTube Red */
+            padding: 20px;
+            margin: 40px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .video-box h3 {
+            color: #c4302b;
+            border-bottom: none;
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+
+        .video-btn {
+            display: inline-block;
+            background-color: #ff0000;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background 0.3s;
+            text-align: center;
+        }
+
+        .video-btn:hover {
+            background-color: #cc0000;
+        }
+
+        mjx-container {
+            font-size: 115% !important;
+            margin: 10px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* --- Mobile Responsiveness --- */
+        @media screen and (max-width: 600px) {
+            body {
+                padding: 15px;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+                margin-top: 30px;
+            }
+
+            h3 {
+                font-size: 1.1rem;
+            }
+
+            p,
+            li {
+                font-size: 1rem;
+            }
+
+            .intro-text {
+                font-size: 0.95rem;
+            }
+
+            .example,
+            .video-box {
+                padding: 15px;
+                margin: 20px 0;
+            }
+
+            table {
+                font-size: 0.9rem;
+                display: block;
+                overflow-x: auto;
+            }
+
+            /* Make video button full width on mobile */
+            .video-btn {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            mjx-container {
+                overflow-x: auto !important;
+                overflow-y: hidden;
+                font-size: 105% !important;
+                max-width: 100%;
+                display: block !important;
+                padding-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🧬 Unit 01: ජීවයේ රසායනික හා සෛලීය පදනම (Master Note - A/l Gathu)</h1>
+
+    <div class="intro-text">
+        <p>A/L Biology විෂය නිර්දේශයේ අඩිතාලම වන පළමු ඒකකය සඳහා සකස් කළ අංගසම්පූර්ණ සටහනයි. විභාගයට අහන්න පුළුවන් සියලුම
+            කරුණු, රූප සටහන් සහ පැහැදිලි කිරීම් මෙහි අන්තර්ගතයි. මෙය කියවීමෙන් පසු ඔබට 'A' සාමාර්ථයකට අවශ්‍ය දැනුම
+            ලැබෙනු ඇත.</p>
+    </div>
+
+    <h2>1. ජීවයේ රසායනික පදනම (Chemical Basis)</h2>
+    <p>ජීවීන් සෑදී ඇති මූලද්‍රව්‍ය 92 න් 25% ක් පමණ ජීවයට අත්‍යවශ්‍ය වේ.
+        <br><strong>ප්‍රධාන මූලද්‍රව්‍ය (96%):</strong> C, H, O, N
+        <br><strong>අනෙක් මූලද්‍රව්‍ය (4%):</strong> Ca, P, K, S, Na, Cl, Mg
+    </p>
+
+    <h3>💧 ජලය (Water) - ජීවයට අත්‍යවශ්‍යම මාධ්‍යය</h3>
+    <p>ජලය ධ්‍රැවීය (Polar) අණුවකි. ජල අණු අතර "හයිඩ්‍රජන් බන්ධන" පවතී. මෙම බන්ධන නිසා ජලයට සුවිශේෂී ගුණ ලැබේ.</p>
+
+    <div class="diagram-container">
+        <img src="https://biologylab.org/wp-content/uploads/2020/08/65a3ceae65c05ee9bdc427b16e6f077c-1-jpg.webp"
+            alt="Water Molecule Structure" class="diagram-img">
+        <div class="diagram-caption">ජල අණුවේ ධ්‍රැවීයතාව සහ හයිඩ්‍රජන් බන්ධන</div>
+    </div>
+
+    <table>
+        <tr>
+            <th>ගුණාංගය</th>
+            <th>ජීවීන්ට ඇති වැදගත්කම</th>
+        </tr>
+        <tr>
+            <td><strong>සංසක්තිය (Cohesion)</strong></td>
+            <td>ජල අණු එකිනෙක බැඳීම. ශාක වල ජල පරිවහනයට (ශෛලම තුළ ජල කඳ නොකැඩී යාමට) වැදගත් වේ.</td>
+        </tr>
+        <tr>
+            <td><strong>ආසක්තිය (Adhesion)</strong></td>
+            <td>ජල අණු වෙනත් පෘෂ්ඨ සමග බැඳීම. ශාක සෛල බිත්ති වල ජලය රැඳී සිටීමට උදව් වේ.</td>
+        </tr>
+        <tr>
+            <td><strong>ඉහළ විශිෂ්ට තාප ධාරිතාව</strong></td>
+            <td>ජීවීන්ගේ දේහ උෂ්ණත්වය නියතව තබා ගැනීම සහ ජලජ පරිසරවල උෂ්ණත්වය නියතව පවත්වා ගැනීම.</td>
+        </tr>
+        <tr>
+            <td><strong>අයිස් වල ඝනත්වය අඩුවීම</strong></td>
+            <td>ජලය මිදෙන විට පාවෙයි. ශීත ඍතුවේදී ජලජ ජීවීන්ට අයිස් තට්ටුව යට ජීවත් වීමට පරිවාරකයක් වේ.</td>
+        </tr>
+    </table>
+
+    <h2>2. ජෛව අණු (Biomolecules)</h2>
+    <p>ජීවී දේහය තැනී ඇති ප්‍රධාන කාබනික අණු වර්ග 4 කි.</p>
+
+    <h3>1. කාබෝහයිඩ්‍රේට ($C_x(H_2O)_y$)</h3>
+    <ul>
+        <li><strong>මොනොසැකරයිඩ:</strong> ග්ලූකෝස්, ෆ්‍රක්ටෝස්, ගැලැක්ටෝස් (Hexose - $C_6H_{12}O_6$).</li>
+        <li><strong>ඩයිසැකරයිඩ:</strong> මෝල්ටෝස් (ග්ලූකෝස් + ග්ලූකෝස්), සූක්‍රෝස් (ග්ලූකෝස් + ෆ්‍රක්ටෝස්), ලැක්ටෝස්
+            (ග්ලූකෝස් + ගැලැක්ටෝස්). ග්ලයිකොසයිඩික් බන්ධන මගින් බැඳේ.</li>
+        <li><strong>පොලිසැකරයිඩ:</strong> පිෂ්ඨය (ශාක සංචිත), ග්ලයිකොජන් (සත්ත්ව සංචිත), සෙලියුලෝස් (ශාක සෛල බිත්ති).
+        </li>
+    </ul>
+
+    <div class="diagram-container">
+        <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcTPu9PWqQ9pw8xPP7vC7pBL5rz7alaEaiRdCbChWw87EY1sotg1160eqdkEgY_ekjsvqoxBhY_mQVeBKHauz2lSragVAZMUy5OmHMGe9ai3d9cM07o"
+            alt="Alpha Glucose Structure" class="diagram-img">
+        <div class="diagram-caption">ග්ලූකෝස් අණුවක ව්‍යුහය</div>
+    </div>
+
+    <h3>2. ප්‍රෝටීන (Proteins)</h3>
+    <p>ඇමයිනෝ අම්ල බහුඅවයවීකරණයෙන් සෑදේ. මූලද්‍රව්‍ය: C, H, O, N, (S). පෙප්ටයිඩ බන්ධන පවතී.
+        <br><strong>ව්‍යුහ මට්ටම්:</strong>
+    <ul>
+        <li><strong>ප්‍රාථමික:</strong> ඇමයිනෝ අම්ල අනුපිළිවෙල.</li>
+        <li><strong>ද්විතීයික:</strong> $\alpha$-හෙලික්සය හා $\beta$-රැලි තල (H බන්ධන).</li>
+        <li><strong>තෘතීයික:</strong> ත්‍රිමාන හැඩය (Disulfide, Ionic, H-bonds, Hydrophobic interactions).</li>
+        <li><strong>චතුර්ථක:</strong> පොලිපෙප්ටයිඩ දාම එකකට වඩා පැවතීම (උදා: හිමොග්ලොබින්).</li>
+    </ul>
+    </p>
+
+    <h3>3. ලිපිඩ (Lipids)</h3>
+    <p>ජලයේ දිය නොවන, කාබනික ද්‍රාවකවල දියවන අණු. ට්‍රයිග්ලිසරයිඩ (මේද/තෙල්), ෆොස්ෆ ලිපිඩ (සෛල පටල), ස්ටෙරොයිඩ
+        (කොලෙස්ටරෝල්). බහුඅවයවක නොවේ.</p>
+
+    <h3>4. න්‍යෂ්ටික අම්ල (Nucleic Acids)</h3>
+    <p>DNA (ප්‍රවේණික ද්‍රව්‍ය) සහ RNA (ප්‍රෝටීන සංස්ලේෂණය). තැනුම් ඒකකය නියුක්ලියොටයිඩයයි.</p>
+
+    <div class="diagram-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/DNA_chemical_structure.svg/500px-DNA_chemical_structure.svg.png"
+            alt="DNA Structure" class="diagram-img">
+        <div class="diagram-caption">DNA ද්විත්ව හෙලික්සය සහ නයිට්‍රජන් භස්ම යුගලනය (A-T, G-C)</div>
+    </div>
+
+    <h2>3. සෛලීය පදනම (Cellular Basis)</h2>
+    <p>සෛල වාදයට අනුව සියලු ජීවීන්ගේ ව්‍යුහමය හා ක්‍රියාකාරී ඒකකය සෛලයයි.</p>
+
+    <h3>ප්‍රොකැරියෝටා vs යූකැරියෝටා</h3>
+    <table>
+        <tr>
+            <th>ලක්ෂණය</th>
+            <th>ප්‍රොකැරියෝටා (බැක්ටීරියා)</th>
+            <th>යූකැරියෝටා (ශාක/සත්ත්ව)</th>
+        </tr>
+        <tr>
+            <td>න්‍යෂ්ටිය</td>
+            <td>නැත. (DNA සයිටොප්ලාස්මයේ පවතී)</td>
+            <td>ඇත. (න්‍යෂ්ටික පටලයකින් වටවී ඇත)</td>
+        </tr>
+        <tr>
+            <td>පටලමය ඉන්ද්‍රයිකා</td>
+            <td>නැත.</td>
+            <td>ඇත (මයිටොකොන්ඩ්‍රියා, හරිතලව ආදිය).</td>
+        </tr>
+        <tr>
+            <td>රයිබොසෝම</td>
+            <td>70S</td>
+            <td>80S (හරිතලව/මයිටොකොන්ඩ්‍රියා තුළ 70S)</td>
+        </tr>
+        <tr>
+            <td>සෛල විභාජනය</td>
+            <td>ද්විඛණ්ඩනය (Binary Fission)</td>
+            <td>අනූනන සහ ඌනන විභාජනය</td>
+        </tr>
+    </table>
+
+    <div class="diagram-container">
+        <img src="https://techdclub.wordpress.com/wp-content/uploads/2018/11/animal_cell.jpg" alt="Animal Cell Diagram"
+            class="diagram-img">
+        <div class="diagram-caption">සත්ත්ව සෛලයක අභ්‍යන්තර ව්‍යුහය (යූකැරියෝටා)</div>
+    </div>
+
+    <h2>4. සෛල ඉන්ද්‍රයිකා (Cell Organelles)</h2>
+
+    <div class="example">
+        <span class="example-title">අත්‍යවශ්‍ය ඉන්ද්‍රයිකා සහ කෘත්‍යයන්:</span>
+        <ul>
+            <li><strong>න්‍යෂ්ටිය (Nucleus):</strong> ප්‍රවේණික තොරතුරු (DNA) ගබඩා කරයි. සෛලයේ පාලක මධ්‍යස්ථානයයි.
+                න්‍යෂ්ටිකාව රයිබොසෝම නිපදවයි.</li>
+            <li><strong>මයිටොකොන්ඩ්‍රියා (Mitochondria):</strong> සෛලීය ශ්වසනය මගින් ATP නිපදවයි. ද්විත්ව පටලමය වේ.
+                තමාගේම DNA ඇත.</li>
+            <li><strong>හරිතලව (Chloroplasts):</strong> ප්‍රභාසංස්ලේෂණය සිදු කරයි (ශාක සෛල වල පමණි).</li>
+            <li><strong>අන්ත:ප්ලාස්මීය ජාලිකා (ER):</strong>
+                <ul>
+                    <li>රළු (RER): ප්‍රෝටීන පරිවහනය.</li>
+                    <li>සිනිඳු (SER): ලිපිඩ සංස්ලේෂණය, විෂ ඉවත් කිරීම, කැල්සියම් ගබඩා කිරීම.</li>
+                </ul>
+            </li>
+            <li><strong>ගොල්ගි දේහ (Golgi Apparatus):</strong> ප්‍රෝටීන වෙනස් කිරීම, ඇසුරුම් කිරීම සහ ස්‍රාවය කිරීම.
+            </li>
+            <li><strong>ලයිසොසෝම (Lysosomes):</strong> ජල විච්ඡේදක එන්සයිම දරයි. සෛල තුළ ජීරණය සිදු කරයි.</li>
+        </ul>
+    </div>
+
+    <h3>ප්ලාස්ම පටලය (Plasma Membrane)</h3>
+    <p><strong>තරල විචිත්‍ර ආකෘතිය (Fluid Mosaic Model):</strong> ෆොස්ෆ ලිපිඩ ද්විත්ව ස්ථරයක ප්‍රෝටීන ගිලී හෝ පාවෙමින්
+        පවතී.</p>
+
+    <div class="diagram-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Cell_membrane_detailed_diagram_en.svg/600px-Cell_membrane_detailed_diagram_en.svg.png"
+            alt="Fluid Mosaic Model" class="diagram-img">
+        <div class="diagram-caption">ප්ලාස්ම පටලයේ තරල විචිත්‍ර ආකෘතිය</div>
+    </div>
+
+    <h2>5. සෛල විභාජනය (Cell Division)</h2>
+
+    <h3>අනූනන විභාජනය (Mitosis)</h3>
+    <p>දේහ සෛලවල සිදුවේ. වර්ණදේහ සංඛ්‍යාව නියතව පවතී ($2n \rightarrow 2n$). වර්ධනයට හා අලුත්වැඩියාවට වැදගත් වේ.</p>
+
+    <h3>ඌනන විභාජනය (Meiosis)</h3>
+    <p>ජන්මාණු සෑදීමේදී සිදුවේ. වර්ණදේහ සංඛ්‍යාව අඩක් වේ ($2n \rightarrow n$).
+        <br><strong>Prophase I</strong> අවධියේදී <strong>ප්‍රවේණික ද්‍රව්‍ය හුවමාරුව (Crossing Over)</strong> සිදුවීම
+        නිසා ප්‍රභේදන ඇතිවේ.
+    </p>
+
+    <div class="diagram-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Major_events_in_mitosis.svg/600px-Major_events_in_mitosis.svg.png"
+            alt="Mitosis Stages" class="diagram-img">
+        <div class="diagram-caption">අනූනන විභාජනයේ ප්‍රධාන අවස්ථා (Prophase, Metaphase, Anaphase, Telophase)</div>
+    </div>
+
+    <div class="important-box">
+        <h3>💡 Exam Hotspots - විභාගයට අනිවාර්යයෙන් බලාගන්න:</h3>
+        <ul>
+            <li><strong>ජලය:</strong> ජලයේ ගුණාංග සහ ඒවා ජීවීන්ට වැදගත් වන ආකාරය (Essay ප්‍රශ්නවලට).</li>
+            <li><strong>Prophase I:</strong> ඌනන විභාජනයේදී Crossing over සිදුවන ආකාරය.</li>
+            <li><strong>DNA vs RNA:</strong> ව්‍යුහමය හා ක්‍රියාකාරී වෙනස්කම්.</li>
+            <li><strong>ඉන්ද්‍රයිකා:</strong> රූප සටහනක් දී ඉන්ද්‍රයිකාව හඳුනා ගැනීමට සහ එහි කෘත්‍ය විමසීමට.</li>
+            <li><strong>එන්සයිම:</strong> උෂ්ණත්වය සහ pH එන්සයිම ක්‍රියාකාරිත්වයට බලපාන ආකාරය (Denaturation).</li>
+        </ul>
+    </div>
+
+    <div class="video-box">
+        <h3>🎥 Recommended Resource: A/L Biology Unit 01</h3>
+        <p><strong>(Sinhala Medium)</strong><br>
+            සම්පූර්ණ ඒකකය ආවරණය වන වීඩියෝ පාඩම් මාලාව.</p>
+
+        <p>📌 කටපාඩම් නොකර තර්කානුකූලව පාඩම මතක තබා ගන්න.</p>
+
+        <a href="https://www.youtube.com/results?search_query=A%2FL+Biology+Unit+01+Sinhala" target="_blank"
+            class="video-btn">
+            ▶ Watch Video Lessons on YouTube
+        </a>
+    </div>
+
+    <footer style="text-align: center; margin-top: 50px; color: #888; font-size: 0.9rem;">
+        <p>Biology Unit 01 Master Note | Prepared based on NIE Resource Book -A/L -gathu</p>
+    </footer>
+
+</body>
+
+</html>
