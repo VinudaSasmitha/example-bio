@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathz Master | Select Subject</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #f3f4f6;
+            --text-main: #1f2937;
+            --text-sub: #6b7280;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* --- WARNING BANNER --- */
+        .warning-banner {
+            background-color: #fee2e2;
+            color: #b91c1c;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid #f87171;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 {
+            color: var(--text-main);
+            margin-bottom: 5px;
+            font-size: 2rem;
+            margin-top: 0;
+        }
+
+        p.subtitle {
+            color: var(--text-sub);
+            margin-bottom: 40px;
+        }
+
+        /* --- CARD CONTAINER --- */
+        .card-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        /* --- CARD STYLES --- */
+        .card {
+            background: white;
+            width: 260px;
+            padding: 30px 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- ICON STYLES --- */
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+
+        .maths-style .icon-box {
+            background-color: #fee2e2;
+            color: #ef4444;
+        }
+
+        .maths-style:hover {
+            border-color: #ef4444;
+        }
+
+        .chem-style .icon-box {
+            background-color: #dcfce7;
+            color: #22c55e;
+        }
+
+        .chem-style:hover {
+            border-color: #22c55e;
+        }
+
+        .card h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .card span {
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        /* Loader */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            font-size: 20px;
+            font-family: 'Poppins', sans-serif;
+            color: #2563eb;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="loading-screen">Checking your profile...</div>
+
+    <div class="warning-banner">
+        <i class="fas fa-exclamation-triangle"></i>
+        Please choose carefully. You can only select your stream once!
+    </div>
+
+    <h1>Select Your Stream</h1>
+    <p class="subtitle">Choose the subject you want to master today</p>
+
+    <div class="card-container">
+        <div class="card maths-style" onclick="selectSubject('Combined Maths')">
+            <div class="icon-box">
+                <i class="fas fa-square-root-variable"></i>
+            </div>
+            <h3>Maths</h3>
+            <span>Pure & Applied • 4 Units Pending</span>
+        </div>
+
+        <div class="card chem-style" onclick="selectSubject('Biology')">
+            <div class="icon-box">
+                <i class="fas fa-flask"></i>
+            </div>
+            <h3>Biology</h3>
+            <span>Organic Conv. • Industrial Chem</span>
+        </div>
+    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCmXBlPTT9YRz9PS1pFfUd1SNXz0kIDppA",
+            authDomain: "mathsapp-d5a07.firebaseapp.com",
+            projectId: "mathsapp-d5a07",
+            storageBucket: "mathsapp-d5a07.firebasestorage.app",
+            messagingSenderId: "954527344482",
+            appId: "1:954527344482:web:cf4371b48eef74be682e3b",
+            measurementId: "G-TH12H1TPTM"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        let currentUser = null;
+
+        // --- 1. EXISTING USER CHECK (Parana aya) ---
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                currentUser = user;
+                try {
+                    const docRef = doc(db, "users", user.uid);
+                    const docSnap = await getDoc(docRef);
+
+                    if (docSnap.exists() && docSnap.data().subject) {
+                        // Subject eka check karala hari thanata yawamu
+                        const subject = docSnap.data().subject;
+                        redirectToDashboard(subject);
+                    } else {
+                        // Subject na -> Cards pennamu
+                        document.getElementById('loading-screen').style.display = 'none';
+                    }
+                } catch (error) {
+                    console.error("Error checking user:", error);
+                    document.getElementById('loading-screen').style.display = 'none';
+                }
+            } else {
+                window.location.href = "index.html";
+            }
+        });
+
+        // --- 2. SELECT FUNCTION (Aluth aya) ---
+        window.selectSubject = async (subjectName) => {
+            if (!currentUser) return;
+
+            if (confirm(`Select ${subjectName}? This cannot be changed.`)) {
+                // Loader eka pennamu save wena athare
+                document.getElementById('loading-screen').style.display = 'flex';
+                document.getElementById('loading-screen').innerText = "Saving your stream...";
+
+                try {
+                    await setDoc(doc(db, "users", currentUser.uid), {
+                        email: currentUser.email,
+                        subject: subjectName,
+                        selectedAt: new Date()
+                    }, { merge: true });
+
+                    // Save unata passe hari thanata yawamu
+                    redirectToDashboard(subjectName);
+
+                } catch (error) {
+                    document.getElementById('loading-screen').style.display = 'none';
+                    alert("Error saving: " + error.message);
+                }
+            }
+        };
+
+        // --- 3. REDIRECT LOGIC (Common Function) ---
+        // Meka thama wadagathma kalla. Methanin thama theeranaya karanne kohetada yanne kiyala.
+        function redirectToDashboard(subject) {
+            if (subject === 'Biology') {
+                window.location.href = "bio-dashboard.html";
+            } else {
+                // "Combined Maths" hari wena monawa hari tibboth
+                window.location.href = "maths-dashboard.html";
+            }
+        }
+    </script>
+</body>
+
+</html>
